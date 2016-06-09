@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 use strict;
 use Data::Dumper;
 
@@ -18,17 +18,19 @@ while (defined ($infile1=glob($indir."/*_1.fasta")) and defined ($infile2=glob (
 	#my $right2=substr ($filename2,index ($filename2,"_")+1,-6);
 
 	printf("(%d)\tNow processing file => %s\n",++$i,"$infile1 and $filename2");
-	if ($left1==$left2) {
+	if ($left1 eq $left2) {
 		open (my $input1,"<",$infile1);
 		open (my $input2,"<",$infile2);
 		open (my $output,">","$outdir/$left1\_slow.fasta");
     	my %hash;
 
-		while (chomp (my $header1=<$input1>) && chomp (my $seq1=<$input1>)) {
+		while (defined (my $header1=<$input1>) && defined (my $seq1=<$input1>)) {
+			chomp ($header1,$seq1);
 			my $id1=$1 if $header1=~ /^(>\S+)/;
 			$hash{$id1}=$seq1;
 		}
-		while (chomp (my $header2=<$input2>) && chomp (my $seq2=<$input2>)) {
+		while (defined (my $header2=<$input2>) && defined (my $seq2=<$input2>)) {
+			chomp ($header2,$seq2);
 			my $id2=$1 if $header2=~ /^(>\S+)/;
 			$hash{$id2}.=$seq2;
 		}
