@@ -5,7 +5,9 @@ open (my $genename,"<","genename.txt");
 chomp (my @names=<$genename>);
 close $genename;
 
-open (my $file,"<","PCG_M.fasta");
+print "Please input your fasta filename: ";
+chomp (my $filename=<STDIN>);
+open (my $file,"<",$filename);
 my $outdir="output";
 system ("rm -rf output") if (-e $outdir);
 system ("mkdir output") if (! -e $outdir);

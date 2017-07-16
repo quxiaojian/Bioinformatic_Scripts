@@ -6,7 +6,9 @@ open (my $genename,"<","genename.txt");
 chomp (my @names=<$genename>);
 close $genename;
 
-open (my $file,"<","PCG_M.fasta");
+print "Please input your fasta filename: ";
+chomp (my $filename=<STDIN>);
+open (my $file,"<",$filename);
 my $seqcount = 0;
 while (<$file>) {
 	$seqcount++ if(/^>/);
