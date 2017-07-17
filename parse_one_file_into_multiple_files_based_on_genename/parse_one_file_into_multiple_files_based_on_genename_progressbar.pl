@@ -41,6 +41,7 @@ while (chomp (my $header=<$file>) && chomp (my $sequence=<$file>)) {
 		if ($header=~ m/$name/) {
 			open (my $fh,">>","$outdir/$name.fasta");
 			print $fh "$header\n$sequence\n";
+			$header=~ s/$name\_//g;
 			close $fh;
 		}
 	}
