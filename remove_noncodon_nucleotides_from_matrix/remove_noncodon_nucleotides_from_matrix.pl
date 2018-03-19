@@ -67,7 +67,8 @@ while (@filenames) {
 	my $row=<$in_fasta>;
 	print $out_fasta $row;
 	while ($row=<$in_fasta>){
-		chomp $row;
+		#chomp $row;
+		$row=~ s/\r|\n//g;
 		if ($row=~ /^>/) { 
 			print $out_fasta "\n".$row."\n";
 		}else{
@@ -82,7 +83,9 @@ while (@filenames) {
 	my %hash;
 	my ($header,$sequence);
 	while (defined ($header=<$input>) and defined ($sequence=<$input>)){
-		chomp($header,$sequence);
+		#chomp($header,$sequence);
+		$header=~ s/\r|\n//g;
+		$sequence=~ s/\r|\n//g;
 		my $species_name=$header;
 		$sequence=~ s/-//g;
 		my $length;
@@ -132,7 +135,8 @@ while (@filenames) {
 
 		open(my $in,"<","$temp_dir1/$name3/blast_reference_$species_fasta");#temp/atpA/blast_reference_xxx.fasta
 		while (<$in>) {
-			chomp;
+			#chomp;
+			$_=~ s/\r|\n//g;
 			my ($item1,$species,$item3,$item4,$item5,$item6,$qstart,$qend,$sstart,$send,$item11,$item12)=split /\t/,$_;
 			my $remainder1=($sstart-1)%3;
 			my $remainder2=($hash{$species}-$send)%3;
@@ -165,7 +169,9 @@ while (@filenames) {
 	open (my $logfile,">>",$warning);#warning.log
 	my ($head,$seq);
 	while (defined ($head=<$inputs>) and defined ($seq=<$inputs>)){#non-interleaved fasta sequence
-		chomp($head,$seq);
+		#chomp($head,$seq);
+		$head=~ s/\r|\n//g;
+		$seq=~ s/\r|\n//g;
 		my $spec_name=$head;
 		$spec_name=~ s/\>//g;
 		$spec_name=~ s/\s//g;
@@ -304,7 +310,9 @@ while (@filenames) {
 
 		my ($header,$sequence,$length,@id,@array);
 		while (defined ($header=<$input_gap>) && defined ($sequence=<$input_gap>)) {
-			chomp ($header,$sequence);
+			#chomp ($header,$sequence);
+			$header=~ s/\r|\n//g;
+			$sequence=~ s/\r|\n//g;
 			$length=length $sequence;
 			push @id,$header;
 
