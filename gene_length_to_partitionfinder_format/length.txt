@@ -1,4 +1,0 @@
-accD	3312
-atpA	1521
-atpB	1530
-atpE	411
