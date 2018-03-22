@@ -1,0 +1,7 @@
+xxx.nex
+yyy.nex
+zzz.nex
+accD.nex
+atpA.nex
+atpB.nex
+atpE.nex
