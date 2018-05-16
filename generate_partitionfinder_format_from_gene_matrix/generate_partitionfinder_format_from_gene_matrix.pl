@@ -108,13 +108,13 @@ __DATA__
 
 =head1 SYNOPSIS
 
-    PGA.pl -r -t [-i -p -q -o -f -l]
+    PGA.pl -i -o -p
     Copyright (C) 2018 Xiao-Jian Qu
     Please contact <quxiaojian@mail.kib.ac.cn>, if you have any bugs or questions.
 
     [-h -help]         help information.
-    [-r -reference]    required: (default: reference) input directory name containing GenBank-formatted file(s) that from the same or close families.
-    [-t -target]       required: (default: target) input directory name containing FASTA-formatted file(s) that will be annotated.
-    [-i -ir]           optional: (default: 1000) minimum allowed inverted-repeat (IR) length.
+    [-i -input]        required: (default: input) input directory name.
+    [-o -output]       required: (default: output) output file name.
+    [-p -pattern]      optional: (default: .phy) suffix pattern.
 
 =cut
