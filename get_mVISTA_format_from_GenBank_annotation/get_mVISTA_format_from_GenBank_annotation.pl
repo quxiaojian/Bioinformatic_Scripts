@@ -270,7 +270,7 @@ while (@filenames) {
 	}
 
 	#output_bed_file
-	open (my $out_bed,">","$filename_base\_VISTA.txt");
+	open (my $out_bed,">","$filename_base\_mVISTA.txt");
 	foreach (@output2){
 		print $out_bed $_;
 	}
